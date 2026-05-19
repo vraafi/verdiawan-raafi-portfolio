@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from "framer-motion";
 
 const projects = [
   {
@@ -36,7 +36,7 @@ const projects = [
   },
 ];
 
-function ProjectCard({ project }: { project: (typeof projects)[0] }) {
+function ProjectCard({ project, onTestClick }: { project: (typeof projects)[0]; onTestClick: () => void }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const mouseX = useMotionValue(0);
@@ -169,14 +169,15 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 
         {/* Action button */}
         <button
+          onClick={onTestClick}
           data-testid={`btn-view-${project.id}`}
           className={`w-full glassmorphism border py-2.5 hud-text text-xs tracking-[0.3em] uppercase transition-all duration-300 relative overflow-hidden group/btn ${
             isPrimary
-              ? "border-primary/40 text-primary hover:border-primary"
-              : "border-secondary/40 text-secondary hover:border-secondary"
+              ? "border-primary/40 text-primary hover:border-primary hover:bg-primary/5"
+              : "border-secondary/40 text-secondary hover:border-secondary hover:bg-secondary/5"
           }`}
         >
-          <span className="relative z-10">VIEW PROTOCOL</span>
+          <span className="relative z-10">TEST LIVE PLAYGROUND</span>
           <div
             className={`absolute inset-0 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ${
               isPrimary ? "bg-primary/10" : "bg-secondary/10"
@@ -189,6 +190,14 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 }
 
 export default function ProjectsDashboard() {
+  const [showPlayground, setShowPlayground] = useState(false);
+  const [iframeLoading, setIframeLoading] = useState(true);
+
+  const handleOpenPlayground = () => {
+    setShowPlayground(true);
+    setIframeLoading(true);
+  };
+
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
       {/* Background decoration */}
@@ -212,10 +221,90 @@ export default function ProjectsDashboard() {
         {/* Project cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard key={project.id} project={project} onTestClick={handleOpenPlayground} />
           ))}
         </div>
       </div>
+
+      {/* Glassmorphic Cyber Playground Modal */}
+      <AnimatePresence>
+        {showPlayground && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 md:p-6"
+            style={{ cursor: "default" }}
+          >
+            {/* Sci-Fi Modal Box */}
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 180 }}
+              className="w-full max-w-6xl h-[85vh] bg-[#030712]/80 border border-primary/40 relative flex flex-col shadow-[0_0_50px_rgba(0,255,255,0.15)] rounded-lg overflow-hidden"
+            >
+              {/* Grid Background Overlay */}
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(18,24,38,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(18,24,38,0.1)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none -z-10" />
+
+              {/* Corner Sci-Fi Brackets */}
+              <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary" />
+              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary" />
+              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary" />
+              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary" />
+
+              {/* Modal Header */}
+              <div className="px-6 py-4 bg-background/50 border-b border-primary/20 flex items-center justify-between z-10">
+                <div className="flex items-center gap-3">
+                  <span className="w-2.5 h-2.5 bg-cyan-400 rounded-full animate-ping" />
+                  <span className="w-2.5 h-2.5 bg-cyan-400 rounded-full absolute" />
+                  <h3 className="hud-text text-sm md:text-base font-bold text-primary tracking-widest uppercase">
+                    &gt; NEXUS_AGENT_CORE.TESTBENCH
+                  </h3>
+                </div>
+
+                {/* Close Button */}
+                <button
+                  onClick={() => setShowPlayground(false)}
+                  className="mono-text text-xs text-red-400 hover:text-red-300 border border-red-500/30 hover:border-red-500/80 bg-red-950/10 px-3 py-1.5 transition-all duration-300 uppercase tracking-widest"
+                >
+                  [ X CLOSE TESTBENCH ]
+                </button>
+              </div>
+
+              {/* Live Iframe Body */}
+              <div className="flex-grow w-full relative bg-[#060814]/40 z-10 overflow-hidden">
+                {/* Simulated Cyber Loader */}
+                {iframeLoading && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-20 gap-4">
+                    <div className="w-16 h-16 border-2 border-t-cyan-400 border-r-cyan-400 border-b-transparent border-l-transparent rounded-full animate-spin" />
+                    <div className="mono-text text-xs text-primary/80 tracking-[0.3em] uppercase animate-pulse">
+                      Initializing Nominal Agent Protocols...
+                    </div>
+                    <div className="mono-text text-[10px] text-foreground/40 tracking-wider">
+                      ESTABLISHING SECURE API GATEWAY CHANNELS
+                    </div>
+                  </div>
+                )}
+
+                <iframe
+                  src="https://live-agent-outreach-gdyw8i9p8tyyoxvuxcy6wl.streamlit.app/?embed=true"
+                  title="Nexus AI Agent Playground"
+                  className="w-full h-full border-0"
+                  onLoad={() => setIframeLoading(false)}
+                />
+              </div>
+
+              {/* Status bar */}
+              <div className="px-6 py-2 bg-background/80 border-t border-primary/20 flex items-center justify-between text-[10px] mono-text text-foreground/40 z-10">
+                <span>SYSTEM STATUS: OPERATIONAL</span>
+                <span className="hidden sm:inline">URL: live-agent-outreach.pages.dev</span>
+                <span>SECURE CDP CONNECTION: TRUE</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
