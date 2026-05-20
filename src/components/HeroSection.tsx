@@ -35,7 +35,7 @@ export default function HeroSection() {
   useEffect(() => {
     // Initial name scramble entrance
     if (nameRef.current) {
-      const originalText = "VERDIAWAN RAAFI";
+      const originalText = "EVAN FISHER";
       const SCRAMBLE_CHARS = '!@#$%^&*ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
       let iteration = 0;
       
@@ -86,7 +86,7 @@ export default function HeroSection() {
               
               {/* Avatar Placeholder */}
               <div className="w-full h-full bg-muted flex items-center justify-center group-hover:animate-glitch">
-                <span className="hud-text text-6xl text-primary font-bold tracking-tighter opacity-80">VR</span>
+                <span className="hud-text text-6xl text-primary font-bold tracking-tighter opacity-80">EF</span>
               </div>
               
               <div className="absolute inset-0 scanline opacity-30 z-20"></div>
@@ -129,15 +129,15 @@ export default function HeroSection() {
               className="hud-text text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-black leading-none mb-4 text-4xl sm:text-5xl md:text-7xl lg:text-[clamp(3rem,6vw,8rem)]"
               style={{ textShadow: "0 0 30px rgba(0,255,255,0.2)" }}
             >
-              VERDIAWAN RAAFI
+              EVAN FISHER
             </h1>
             
             <h2 className="mono-text text-primary text-xl md:text-2xl mb-8 tracking-widest h-8">
-              <Typewriter text="BACK-END DEVELOPER & AI AGENT ENGINEER" delay={1500} />
+              <Typewriter text="ELITE AI ARCHITECT & FREELANCE MVP" delay={1500} />
             </h2>
 
             <p className="mono-text text-foreground/80 leading-relaxed max-w-2xl text-sm md:text-base border-l border-secondary/30 pl-4 py-2 bg-secondary/5">
-              Self-taught developer specialized in Python, REST API integration, and multi-agent AI architectures. Architecting systems that operate autonomously in the dark void.
+              Elite freelance MVP and founder of Unicorn Capital. Architecting advanced autonomous Python multi-agent systems, capital-raising financial pipelines, and secure enterprise integrations. Powered by dual-brain AI systems, scaled to help founders raise $5B+.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4">

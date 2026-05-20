@@ -91,7 +91,7 @@ export default function Portfolio() {
         <footer className="relative z-10 border-t border-primary/10 py-10">
           <div className="container mx-auto px-6 text-center">
             <p className="mono-text text-foreground/30 text-xs tracking-[0.3em]">
-              &gt; VERDIAWAN.RAAFI — BACK-END DEVELOPER & AI AGENT ENGINEER
+              &gt; EVAN.FISHER — ELITE AI SYSTEMS ARCHITECT & FREELANCE MVP
             </p>
             <p className="mono-text text-foreground/20 text-[10px] tracking-[0.2em] mt-2">
               SYSTEM BUILD v2.0.26 — ALL AGENTS NOMINAL

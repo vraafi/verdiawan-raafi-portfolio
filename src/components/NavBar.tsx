@@ -65,7 +65,7 @@ export default function NavBar() {
         
         <div className="flex items-center gap-4">
           <div className="w-2 h-2 rounded-full bg-primary animate-blink glow-cyan"></div>
-          <span className="hud-text text-primary text-sm font-bold tracking-widest">SYS.VR</span>
+          <span className="hud-text text-primary text-sm font-bold tracking-widest">EF.ENG</span>
         </div>
 
         <div className="flex items-center gap-6">

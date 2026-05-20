@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  { label: "Python", color: "primary" },
-  { label: "Luau", color: "secondary" },
-  { label: "LLM Integration", color: "primary" },
-  { label: "Google Gemini API", color: "secondary" },
-  { label: "Telegram Bot API", color: "primary" },
-  { label: "Browser Automation", color: "secondary" },
-  { label: "REST API", color: "primary" },
-  { label: "Multi-Agent AI", color: "secondary" },
+  { label: "Autonomous AI Agents", color: "primary" },
+  { label: "Python & TypeScript", color: "secondary" },
+  { label: "Financial Modeling", color: "primary" },
+  { label: "Unicorn Capital Pitch Decks", color: "secondary" },
+  { label: "Google Gemini & OpenAI APIs", color: "primary" },
+  { label: "Browser & UI Automation", color: "secondary" },
+  { label: "Advanced RAG Pipelines", color: "primary" },
+  { label: "Upwork & Scale Strategy", color: "secondary" },
 ];
 
 const floatVariants = (i: number) => ({
