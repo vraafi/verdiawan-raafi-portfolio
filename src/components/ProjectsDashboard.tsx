@@ -200,6 +200,7 @@ export default function ProjectsDashboard() {
 
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
+      <div id="ai-dashboard" className="absolute top-0 left-0" />
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[150px]" />
@@ -263,13 +264,23 @@ export default function ProjectsDashboard() {
                   </h3>
                 </div>
 
-                {/* Close Button */}
-                <button
-                  onClick={() => setShowPlayground(false)}
-                  className="mono-text text-xs text-red-400 hover:text-red-300 border border-red-500/30 hover:border-red-500/80 bg-red-950/10 px-3 py-1.5 transition-all duration-300 uppercase tracking-widest"
-                >
-                  [ X CLOSE TESTBENCH ]
-                </button>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://live-agent-outreach-gdyw8i9p8tyyoxvuxcy6wl.streamlit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mono-text text-xs text-secondary hover:text-secondary-light border border-secondary/30 hover:border-secondary bg-secondary/5 px-3 py-1.5 transition-all duration-300 uppercase tracking-widest"
+                  >
+                    [ ⚡ OPEN EXTERNAL HUB ]
+                  </a>
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setShowPlayground(false)}
+                    className="mono-text text-xs text-red-400 hover:text-red-300 border border-red-500/30 hover:border-red-500/80 bg-red-950/10 px-3 py-1.5 transition-all duration-300 uppercase tracking-widest"
+                  >
+                    [ X CLOSE TESTBENCH ]
+                  </button>
+                </div>
               </div>
 
               {/* Live Iframe Body */}

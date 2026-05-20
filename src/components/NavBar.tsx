@@ -68,21 +68,34 @@ export default function NavBar() {
           <span className="hud-text text-primary text-sm font-bold tracking-widest">SYS.VR</span>
         </div>
 
-        <ul className="flex gap-8">
-          {navItems.map((item) => (
-            <li key={item.id}>
-              <button
-                data-testid={`nav-${item.id}`}
-                onClick={() => scrollToSection(item.id)}
-                onMouseEnter={(e) => handleMouseEnter(e, item.label, item.preview)}
-                onMouseLeave={(e) => handleMouseLeave(e, item.label)}
-                className="hud-text text-foreground/80 hover:text-primary transition-colors duration-300 text-sm tracking-widest relative px-2 py-1"
-              >
-                {item.label}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-6">
+          <ul className="flex gap-8 items-center">
+            {navItems.map((item) => (
+              <li key={item.id}>
+                <button
+                  data-testid={`nav-${item.id}`}
+                  onClick={() => scrollToSection(item.id)}
+                  onMouseEnter={(e) => handleMouseEnter(e, item.label, item.preview)}
+                  onMouseLeave={(e) => handleMouseLeave(e, item.label)}
+                  className="hud-text text-foreground/80 hover:text-primary transition-colors duration-300 text-sm tracking-widest relative px-2 py-1"
+                >
+                  {item.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="https://live-agent-outreach-gdyw8i9p8tyyoxvuxcy6wl.streamlit.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glassmorphism hud-text px-4 py-2 border border-secondary/50 text-secondary hover:border-secondary hover:bg-secondary/10 transition-all duration-300 text-xs tracking-widest relative overflow-hidden group shadow-[0_0_15px_rgba(155,89,182,0.15)] flex items-center gap-2"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+            <span className="relative z-10">⚡ LAUNCH AI CORE</span>
+            <div className="absolute inset-0 bg-secondary/15 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300"></div>
+          </a>
+        </div>
       </nav>
 
       {/* Floating Tooltip */}

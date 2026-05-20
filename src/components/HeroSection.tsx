@@ -140,11 +140,28 @@ export default function HeroSection() {
               Self-taught developer specialized in Python, REST API integration, and multi-agent AI architectures. Architecting systems that operate autonomously in the dark void.
             </p>
 
-            <div className="mt-8 flex gap-4">
-              <button className="glassmorphism hud-text px-6 py-3 text-primary text-sm hover:bg-primary/10 transition-colors border border-primary/50 relative overflow-hidden group">
-                <span className="relative z-10">INITIALIZE PROTOCOL</span>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <button 
+                onClick={() => {
+                  const el = document.getElementById("projects");
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="glassmorphism hud-text px-6 py-3 text-primary text-sm hover:bg-primary/10 transition-colors border border-primary/50 relative overflow-hidden group flex items-center justify-center"
+              >
+                <span className="relative z-10">VIEW AGENT SPECS</span>
                 <div className="absolute inset-0 bg-primary/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300"></div>
               </button>
+
+              <a 
+                href="https://live-agent-outreach-gdyw8i9p8tyyoxvuxcy6wl.streamlit.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glassmorphism hud-text px-6 py-3 text-secondary text-sm hover:border-secondary hover:bg-secondary/10 transition-all border border-secondary/50 relative overflow-hidden group flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(155,89,182,0.2)]"
+              >
+                <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+                <span className="relative z-10">⚡ LAUNCH AI AGENT HUB</span>
+                <div className="absolute inset-0 bg-secondary/15 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300"></div>
+              </a>
             </div>
           </div>
         </div>
