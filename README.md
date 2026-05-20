@@ -1,4 +1,4 @@
-# Evan Fisher Engineering — Portfolio
+# Verdiawan Raafi — Portfolio
 
 > Hyper-cinematic Sci-Fi HUD personal portfolio for an AI & Back-End Engineer.
 
@@ -39,5 +39,5 @@ npm run dev
 Open `src/pages/Portfolio.tsx` and find the commented `<video>` block (~line 17). Uncomment it and replace `YOUR_VIDEO_URL_HERE` with your 8K CGI quantum robot video URL.
 
 ## Built by
-**Evan Fisher** — Elite AI Systems Architect & Freelance MVP
+**Verdiawan Raafi** — Elite AI Systems Engineer (Evan Fisher Method)
 
